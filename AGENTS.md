@@ -46,7 +46,7 @@
 - Git remote не подключён. После создания репозитория на GitHub: `git remote add origin git@github.com:<user>/libe-web.git`, затем `git push -u origin main`
 - MCP не настроен. При необходимости подключения серверов (например, `chrome-devtools-mcp` для Lighthouse-аудитов и performance-трейсов) — конфиг писать в `.mcp.json` в корне проекта (закоммичивать в git); управление через `/mcp-config`, статус — `/mcp`. Пример сервера: `{ "command": "npx", "args": ["-y", "chrome-devtools-mcp@latest"] }`
 - Направление развития: бекенд на NestJS. Кандидаты: каталог с фильтрами (первый, осваивает SSR/кэширование), затем Lighthouse-монитор с графиками Core Web Vitals и очередями (BullMQ)
-- Предупреждения git «LF will be replaced by CRLF» — штатны для Windows, не ошибка. Убрать можно через `.gitattributes` с `* text=auto eol=lf` и `git add --renormalize .`
+- Переводы строк: в репозитории LF, задано через `.gitattributes` (`* text=auto eol=lf`) — предупреждения git о CRLF не должны появляться
 
 ## Не делать
 
