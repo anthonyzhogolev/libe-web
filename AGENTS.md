@@ -48,7 +48,7 @@
 ## Контекст и ожидающие шаги
 
 - TypeScript зафиксирован на ^5.9: typescript-eslint (внутри eslint-config-next) пока не поддерживает TS 7.0. Когда поддержка выйдет (TS >= 7.1) — обновить: `npm install -D typescript@latest`
-- Git remote не подключён. После создания репозитория на GitHub: `git remote add origin git@github.com:<user>/libe-web.git`, затем `git push -u origin main`
+- Git remote `origin` подключён: https://github.com/anthonyzhogolev/libe-web.git (HTTPS)
 - MCP не настроен. При необходимости подключения серверов (например, `chrome-devtools-mcp` для Lighthouse-аудитов и performance-трейсов) — конфиг писать в `.mcp.json` в корне проекта (закоммичивать в git); управление через `/mcp-config`, статус — `/mcp`. Пример сервера: `{ "command": "npx", "args": ["-y", "chrome-devtools-mcp@latest"] }`
 - Направление развития: бекенд на NestJS. Кандидаты: каталог с фильтрами (первый, осваивает SSR/кэширование), затем Lighthouse-монитор с графиками Core Web Vitals и очередями (BullMQ)
 - Переводы строк: в репозитории LF, задано через `.gitattributes` (`* text=auto eol=lf`) — предупреждения git о CRLF не должны появляться
