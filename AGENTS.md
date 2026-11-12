@@ -13,7 +13,7 @@
 
 ## Команды
 
-- `npm run dev` — dev-сервер (http://localhost:3000)
+- `npm run dev` — dev-сервер (http://localhost:3002)
 - `npm run build` — production-сборка
 - `npm run start` — запуск собранного приложения
 - `npm run lint` — проверка ESLint; отдельные файлы: `npm run lint -- app/`
@@ -24,8 +24,9 @@
 - `app/` — роуты App Router (`layout.tsx`, `page.tsx`); новая страница = директория с `page.tsx`
 - `components/ui/` — компоненты shadcn/ui (генерируются CLI, не править руками — перегенерировать через `npx shadcn@latest add <name> -o`)
 - `lib/utils.ts` — реэкспорт `cn`; общие хелперы
-- `openapi/openapi.json` — OpenAPI-спека (сейчас заглушка; источник для генерации типов)
+- `openapi/openapi.json` — OpenAPI-спека бекенда `libe-api` (источник для генерации типов)
 - `lib/api/schema.ts` — сгенерированные из спеки типы (`openapi-typescript`), не редактировать вручную
+- `lib/api/types.ts` — алиасы DTO поверх `schema.ts` (`RegisterDto`, `LoginDto` и т.д.); дополнять при появлении новых схем в спеке
 - Алиас импортов: `@/*` → корень проекта (например, `@/components/Button`)
 - `.agents/skills/` — project-level скиллы: `next-best-practices`, `nextjs-app-router-patterns`, `typescript-advanced-types`
 
@@ -42,7 +43,6 @@
 ## Контекст и ожидающие шаги
 
 - TypeScript зафиксирован на ^5.9: typescript-eslint (внутри eslint-config-next) пока не поддерживает TS 7.0. Когда поддержка выйдет (TS >= 7.1) — обновить: `npm install -D typescript@latest`
-- Переименование проекта в `libe-web` (в процессе): имена обновлены в `package.json` и `package-lock.json`, но не закоммичены. Папку `learn-project-next` нужно переименовать в `libe-web` вручную при закрытой сессии Kimi Code, затем открыть проект по новому пути и закоммитить (`chore: rename project to libe-web`)
 - Git remote не подключён. После создания репозитория на GitHub: `git remote add origin git@github.com:<user>/libe-web.git`, затем `git push -u origin main`
 - MCP не настроен. При необходимости подключения серверов (например, `chrome-devtools-mcp` для Lighthouse-аудитов и performance-трейсов) — конфиг писать в `.mcp.json` в корне проекта (закоммичивать в git); управление через `/mcp-config`, статус — `/mcp`. Пример сервера: `{ "command": "npx", "args": ["-y", "chrome-devtools-mcp@latest"] }`
 - Направление развития: бекенд на NestJS. Кандидаты: каталог с фильтрами (первый, осваивает SSR/кэширование), затем Lighthouse-монитор с графиками Core Web Vitals и очередями (BullMQ)
