@@ -21,7 +21,10 @@
 
 ## Структура
 
-- `app/` — роуты App Router (`layout.tsx`, `page.tsx`); новая страница = директория с `page.tsx`
+- `app/[locale]/` — роуты App Router под сегментом локали (`layout.tsx`, `page.tsx`, `(auth)/`); новая страница = директория с `page.tsx` внутри `app/[locale]/`
+- `i18n/` — конфигурация next-intl: `routing.ts` (локали), `request.ts` (загрузка сообщений), `navigation.ts` (типизированные `Link`/`useRouter`/`usePathname`)
+- `messages/` — словари переводов `ru.json` и `en.json` (ключи типизированы через `global.d.ts`)
+- `middleware.ts` — middleware next-intl (определение локали, редирект на префикс `/ru`, `/en`)
 - `components/ui/` — компоненты shadcn/ui (генерируются CLI, не править руками — перегенерировать через `npx shadcn@latest add <name> -o`)
 - `lib/utils.ts` — реэкспорт `cn`; общие хелперы
 - `openapi/openapi.json` — OpenAPI-спека бекенда `libe-api` (источник для генерации типов)
@@ -33,6 +36,8 @@
 ## Соглашения
 
 - Компоненты по умолчанию — серверные; `'use client'` — только где нужны хуки, события или браузерное состояние
+- Все строки UI — только через next-intl (`useTranslations` / `getTranslations`), словари в `messages/ru.json` и `messages/en.json`; при добавлении строки — обновлять оба словаря
+- Навигация внутри приложения — через `Link`/`useRouter`/`usePathname` из `@/i18n/navigation` (учитывают текущую локаль), не `next/link` напрямую
 - TypeScript строгий: без `any` без необходимости, `as` — только обоснованно, публичные API — с явными возвращаемыми типами
 - После изменений кода прогонять `npm run lint` и `npm run build`
 - После изменения `openapi/openapi.json` прогонять `npm run generate:api`

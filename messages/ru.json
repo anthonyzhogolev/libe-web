@@ -1,0 +1,43 @@
+{
+  "metadata": {
+    "title": "Learn Project Next",
+    "description": "Next.js + React + TypeScript"
+  },
+  "home": {
+    "cardTitle": "shadcn/ui подключён",
+    "cardDescription": "Tailwind CSS v4 + стиль base-nova, цвет neutral",
+    "badge": "проверка",
+    "inputPlaceholder": "Введите текст…",
+    "buttonDefault": "Default",
+    "buttonOutline": "Outline",
+    "buttonGhost": "Ghost",
+    "buttonSecondary": "Secondary",
+    "login": "Вход",
+    "register": "Регистрация"
+  },
+  "auth": {
+    "login": {
+      "title": "Вход",
+      "description": "Войдите в свой аккаунт",
+      "email": "Email",
+      "password": "Пароль",
+      "submit": "Войти",
+      "noAccount": "Нет аккаунта?",
+      "registerLink": "Регистрация"
+    },
+    "register": {
+      "title": "Регистрация",
+      "description": "Создайте новый аккаунт",
+      "name": "Имя",
+      "namePlaceholder": "Иван Иванов",
+      "email": "Email",
+      "password": "Пароль",
+      "submit": "Зарегистрироваться",
+      "haveAccount": "Уже есть аккаунт?",
+      "loginLink": "Войти"
+    }
+  },
+  "localeSwitcher": {
+    "label": "Язык"
+  }
+}

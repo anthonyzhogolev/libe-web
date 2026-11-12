@@ -1,11 +1,14 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import type { FormEvent } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 export function RegisterForm() {
+  const t = useTranslations("auth.register");
+
   function handleSubmit(event: FormEvent<HTMLFormElement>): void {
     event.preventDefault();
     // TODO: вызов POST /auth/register
@@ -15,7 +18,7 @@ export function RegisterForm() {
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <div className="flex flex-col gap-2">
         <label htmlFor="name" className="text-sm font-medium">
-          Имя
+          {t("name")}
         </label>
         <Input
           id="name"
@@ -23,12 +26,12 @@ export function RegisterForm() {
           type="text"
           autoComplete="name"
           required
-          placeholder="Иван Иванов"
+          placeholder={t("namePlaceholder")}
         />
       </div>
       <div className="flex flex-col gap-2">
         <label htmlFor="email" className="text-sm font-medium">
-          Email
+          {t("email")}
         </label>
         <Input
           id="email"
@@ -41,7 +44,7 @@ export function RegisterForm() {
       </div>
       <div className="flex flex-col gap-2">
         <label htmlFor="password" className="text-sm font-medium">
-          Пароль
+          {t("password")}
         </label>
         <Input
           id="password"
@@ -52,7 +55,7 @@ export function RegisterForm() {
         />
       </div>
       <Button type="submit" className="w-full">
-        Зарегистрироваться
+        {t("submit")}
       </Button>
     </form>
   );

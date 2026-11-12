@@ -1,11 +1,14 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import type { FormEvent } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 export function LoginForm() {
+  const t = useTranslations("auth.login");
+
   function handleSubmit(event: FormEvent<HTMLFormElement>): void {
     event.preventDefault();
     // TODO: вызов POST /auth/login
@@ -15,7 +18,7 @@ export function LoginForm() {
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <div className="flex flex-col gap-2">
         <label htmlFor="email" className="text-sm font-medium">
-          Email
+          {t("email")}
         </label>
         <Input
           id="email"
@@ -28,7 +31,7 @@ export function LoginForm() {
       </div>
       <div className="flex flex-col gap-2">
         <label htmlFor="password" className="text-sm font-medium">
-          Пароль
+          {t("password")}
         </label>
         <Input
           id="password"
@@ -39,7 +42,7 @@ export function LoginForm() {
         />
       </div>
       <Button type="submit" className="w-full">
-        Войти
+        {t("submit")}
       </Button>
     </form>
   );
