@@ -1,5 +1,7 @@
+import Link from "next/link";
+
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardAction,
@@ -32,10 +34,21 @@ export default function Home() {
             <Button variant="ghost">Ghost</Button>
           </div>
         </CardContent>
-        <CardFooter>
+        <CardFooter className="flex-col items-stretch gap-2">
           <Button variant="secondary" className="w-full">
             Secondary
           </Button>
+          <div className="flex gap-2">
+            <Link href="/login" className={buttonVariants({ className: "flex-1" })}>
+              Вход
+            </Link>
+            <Link
+              href="/register"
+              className={buttonVariants({ variant: "outline", className: "flex-1" })}
+            >
+              Регистрация
+            </Link>
+          </div>
         </CardFooter>
       </Card>
     </main>
